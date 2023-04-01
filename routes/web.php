@@ -1,12 +1,10 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AccueilController;
 
-
-
-Route::get('/', function () {
-    return view('accueil');
-})->name('accueil');
+Route::get('/', [AccueilController::class, 'show'])->name('accueil');
 
 Route::get('/boutique', function () {
     return view('boutique');
@@ -22,4 +20,7 @@ Route::get('/article', function(){
 })->name('article');
 
 
+
+
+ ?>
 
