@@ -17,42 +17,71 @@ nav {
 }
 
 nav ul{
-    display: inline-block;
+    display: flex;
+    justify-content: center;
     list-style-type: none;
 }
 
 nav .nav-page li{
-    display: inline-block;
+    display: flex;
+    align-items: center;
 }
-
-
-#a-connexion{
-    display: block;
-    background-color: #85586D;
-    border-radius: 30px;
-    color: white;
-    font-weight: 500;
-    padding: 10px 20px;
-    margin-left: 20px;
-
+.div-user{
+    background-color: #FCF8F4;
+    display: flex;
+    justify-content: center;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
 }
-#a-connexion:hover{
-    background-color: #dfdfdf;
-    border-radius: 30px;
-    color: #85586D;
-
+.div-user:hover{
+    background-color: #e5e1dd;
 }
-
+.div-user img{
+    margin-right: 10px;
+}
 
 .nav-page a{
     padding: 20px 15px;
+    font-weight: 500;
+    margin: 5px;
+    transition: 0.3s ease;
+
 
 }
-.nav-page li:not(:last-child):hover a {
+.nav-page li:nth-child(1):hover a,
+.nav-page li:nth-child(2):hover a ,.active:hover {
     color: #85586D;
-    border-bottom: 2px solid #85586D;
+    background-color: #e5e1dd;
 
 }
+
+.nav-page .btn-connexion{
+    border-radius: 30px;
+    color: #85586D;
+    margin-top: 10px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: 2px solid #FCF8F4;
+
+}
+.nav-page .btn-inscription{
+    border-radius: 30px;
+    color: #85586D;
+    margin-top: 10px;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: 2px solid #85586D;
+
+}
+
+.nav-page .btn-connexion:hover,.nav-page .btn-inscription:hover{
+    color: white;
+    background-color: #85586D;
+    border: 2px solid #85586D;
+}
+
+
+
 .active{
     color: #85586D;
     border-bottom: 2px solid #85586D;
@@ -75,6 +104,51 @@ a{
 p{
     color: #555;
 }
+
+
+.sub-menuwrap{
+    position: absolute;
+    top: 105%;
+    overflow: hidden;
+    right: 10px;
+    width: 300px;
+    max-height: 0px;
+    background-color: white;
+    border-radius: 5px;
+    transition: max-height 0.5s;
+}
+.sub-menuwrap.open-menu{
+    max-height: 130px;
+}
+
+.sub-menuwrap ul{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0px;
+}
+
+.sub-menuwrap li form button,.sub-menuwrap li a{
+    background-color: #fff;
+    padding: 20px;
+    width: 100%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    color: #000;
+    font-size: 15px;
+
+}
+.sub-menuwrap li form button:hover,.sub-menuwrap li a:hover{
+    background-color: #fafafa;
+
+}
+hr{
+    margin: 0 20px;
+    border-color: #f7f7f7;
+}
+
 
 
 
@@ -103,9 +177,7 @@ p{
     transition: all 0.5s ease;
 
    }
-   #a-connexion{
-        margin: 0;
-   }
+
    .nav-page.mobile-menu{
     margin-left: 0;
 

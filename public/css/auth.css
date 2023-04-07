@@ -1,0 +1,118 @@
+.container-auth{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fdfdfd;
+
+
+}
+
+
+.mapage button{
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #85586D;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    background: rgba(0,0,0,0);
+}
+.mapage button:hover{
+    color: #FFF;
+    background-color: #85586D;
+}
+.container-auth form{
+    border-radius: .5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 500px;
+    background-color: black;
+    display: flex;
+    background-color: #FFF;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 40px;
+}
+
+
+
+.container-auth form input{
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+.input-l{
+    width: 80%;
+}
+.container-auth form h1{
+    font-weight: bold;
+    font-size: 30px;
+    border-radius: 40px;
+    cursor: pointer;
+    margin-bottom: 60px;
+    margin-top: 40px;
+    font-family: 'Playfair Display', serif;
+}
+form .info-perso{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+form .info-perso input{
+    width: 47%;
+    display: inline-block;
+}
+.error-div{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.error-div .test{
+    width: 47%;
+    display: inline-block;
+}
+.container-auth form button{
+    padding: 15px 40px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    background-color: #85586D;
+    border: 2px solid #85586D;
+    color: white;
+}
+.container-auth form button:hover{
+    color: #85586D;
+    border: 2px solid #85586D;
+    background-color: white;
+
+}
+
+
+.remember{
+    width: 80%
+}
+.motdepasse-oublie{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.error{
+    white-space: nowrap;
+    z-index: 2;
+    overflow: visible;
+    color: #FF0000;
+    width: 80%;
+    height: 20px;
+    font-size: 13px;
+}
+.p-reset{
+    margin: 50px 50px 20px 50px;
+}

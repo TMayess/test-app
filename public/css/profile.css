@@ -1,0 +1,116 @@
+.container-profil{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fdfdfd;
+
+
+
+}
+.last{
+     padding-bottom: 40px;
+}
+
+
+.container-profil form{
+    margin-top: 50px;
+    padding: 50px;
+    border-radius: .5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 650px;
+    background-color: black;
+    display: flex;
+    background-color: #FFF;
+    flex-direction: column;
+}
+
+.div-profil{
+display: flex;
+flex-direction: column;
+}
+
+
+.container-profil form input{
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 5px;
+}
+
+.div-profil-modif{
+    width: auto;
+    display: flex;
+    max-height: 0;
+    overflow: hidden;
+    justify-content: space-between;
+    align-items: center;
+    transition: 0.5s max-height ease-in-out;
+}
+.div-profil-modif-pass {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+  }
+
+
+.active-div {
+    max-height: 300px;
+}
+.div-profil-pass{
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.div-profil-pass input{
+    width: 60%;
+}
+
+.div-profil-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    cursor: pointer;
+}
+.div-profil-info:hover{
+    background-color: #ddd;
+}
+
+.div-profil-modif input{
+    width: 60%;
+}
+
+
+.error-div{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.error-div .test{
+    width: 47%;
+    display: inline-block;
+}
+.container-profil form button{
+    padding: 15px 40px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    margin-top: 30px;
+    margin-bottom: 5px;
+    background-color: #85586D;
+    border: 2px solid #85586D;
+    color: white;
+}
+.container-profil form button:hover{
+    color: #85586D;
+    border: 2px solid #85586D;
+    background-color: white;
+
+}
+
+

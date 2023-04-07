@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -44,4 +44,42 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+
+@extends('app')
+@section('content')
+
+<header>
+    @include('part.navbar')
+</header>
+
+<div class="container-auth">
+    <form  method="POST" action="{{ route('login') }}">
+        @csrf
+        <h1>Se connecter</h1>
+        <div class="error">
+            @error('email')
+            {{$message}}
+            @enderror
+        </div>
+        <input name="email" class="input-l" type="email" placeholder="Email">
+        <div class="error">
+            @error('password')
+            {{$message}}
+            @enderror
+        </div>
+        <input name="password"  class="input-l" type="password" placeholder="Mot de passe">
+        <label  class="remember" >
+            <input id="remember_me" type="checkbox" name="remember">
+            <span>Se souvenir de moi</span>
+        </label>
+        <button type="submit">Connexion</button>
+
+        @if (Route::has('password.request'))
+            <a href="{{ route('password.request') }}" class="motdepasse-oublie">Mot de passe oublié ?</a>
+        @endif
+    </form>
+
+</div>
+@endsection
+

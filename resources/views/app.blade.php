@@ -5,7 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="css/connexion-inscription.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/gestion.css">
+    {{-- <link rel="stylesheet" href="css/part/navbar.css"> --}}
     {{-- <link rel="stylesheet" href="css/article.css"> --}}
 
     @vite('resources/js/app.js')

@@ -1,0 +1,153 @@
+.div-logo{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+.div-sidenav{
+    margin-top: 200px;
+}
+
+.sidebar{
+    position: fixed;
+    width: 250px;
+    height: auto;
+    background: #FCF8F4;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.sidebar ul{
+    list-style: none;
+}
+.sidebar ul li a{
+    display: inline-block;
+    padding: 20px 40px 20px 50px;
+    width: 250px;
+    z-index: 2;
+    font-weight: 500;
+    border-left: 3px solid #e6e3e0;
+}
+
+.sidebar ul li a:hover {
+    color: black;
+    padding-left: 60px ;
+    transition: 0.4s ;
+    background: #e6e3e0;
+}
+.sidebar ul li .active-side{
+    background: #e6e3e0;
+    padding-left: 60px ;
+    border-left: 3px solid #85586D
+}
+
+.gestion{
+    width: 100%;
+box-sizing: border-box;
+font-family: "Segoe UI";
+scroll-behavior: smooth;
+
+}
+
+.section-ajout{
+    background-color: #fdfdfd;
+
+
+}
+.section-ajout form{
+    margin: 40px;
+    padding: 40px;
+    float: right;
+    border-radius: .5rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: calc(100% - 330px);
+    background-color: #FFF;
+}
+.section-ajout form h1{
+    margin-bottom: 30px;
+}
+.section-ajout form div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-ajout form input,.section-ajout form textarea{
+width: 70%;
+padding: 20px;
+border: 1px solid #ddd;
+border-radius: 4px;
+margin-bottom: 5px;
+
+}
+
+.section-ajout form textarea{
+height: 200px;
+}
+.section-ajout form button{
+padding: 15px 50px;
+font-size: 15px;
+font-weight: bold;
+border-radius: 40px;
+border: none;
+cursor: pointer;
+margin-top: 30px;
+margin-bottom: 5px;
+background-color: #85586D;
+border: 2px solid #85586D;
+color: white;
+}
+.section-ajout form button:hover{
+color: #85586D;
+border: 2px solid #85586D;
+background-color: white;
+
+}
+.section-ajout form .div-btn {
+display: flex;
+justify-content: flex-end;
+}
+
+
+
+table {
+border-collapse: collapse;
+white-space: nowrap;
+width: 100%;
+
+
+}
+
+th, td {
+
+text-align: left;
+border-bottom: 1px solid #ddd;
+word-wrap: break-word; white-space: pre-wrap;
+border: 1px solid rgb(214, 214, 214);
+}
+
+th {
+padding: 20px 20px;
+background-color: #f2f2f2;
+color: #333;
+font-weight: bold;
+text-transform: uppercase;
+}
+
+td {
+font-size: 16px;
+color: #555;
+text-align: center;
+padding: 12px 15px;
+}
+
+tr:hover td {
+background-color: #f5f5f5;
+}
+#recherche{
+    width: 400px;
+    float: right;
+}
