@@ -17,7 +17,7 @@ class ProductFormRequest extends FormRequest
             'name' => 'required|string|max:255',
             'description' => 'required|string',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|max:2048',
+            'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
             'reference_product' => 'nullable|string|max:255',
             'dimensions' => 'nullable|string|max:255',
             'materials' => 'nullable|string|max:255',

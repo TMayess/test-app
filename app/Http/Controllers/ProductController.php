@@ -10,16 +10,32 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::All();
+        $products = Product::paginate(1);
         return view('fournisseur/gestionArticle',compact('products'));
     }
 
     public function store(ProductFormRequest $request){
-            $date = $request->validated();
+        $validated = $request->validated();
+        $image_path = $request->file('image')->store('image/products', 'public');
 
-            $product = Product::create($date);
-            return redirect('/gestion-article')->with('message','Produit est ajouter');
+        $product = new Product($validated);
+        $product->image = $image_path;
+        $product->save();
+
+        return redirect()->route('article.index')->with('message','Produit est ajouté');
     }
+    public function SearchProduct(Request $request)
+    {
+        $products = Product::all();
+    if($request->keyword != ''){
+    $products = Product::where('name','LIKE','%'.$request->keyword.'%')->get();
+    }
+    return response()->json([
+        'products' => $products
+    ]);
+    }
+
+
 
     public function index2()
     {
