@@ -161,3 +161,6 @@ background-color: #f5f5f5;
     float: right;
     margin-left:300px;
 }
+.div-crud button{
+    background-color: transparent;
+}

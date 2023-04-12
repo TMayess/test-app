@@ -37,6 +37,10 @@ Route::get('/gestion-utilisateur', [ProductController::class, 'index'])->name('u
 
 Route::namespace('Admin')->prefix('admin')->middleware(['auth:sanctum', 'verified', 'UserRole:admin'])->group(function () {
     Route::get('/gestion-utilisateur', [UserController::class,'index'])->name('utilisateur.index');
+    Route::get('/utilisateur-edit/{user}', [UserController::class, 'edit'])->name('utilisateur.edit');
+    Route::post('/utilisateur-edit/{user}', [UserController::class, 'update'])->name('utilisateur.update');
+    Route::delete('/utilisateur/{user}', [UserController::class, 'destroy'])->name('utilisateur.destroy');
+
 });
 
 Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'UserRole:admin,fournisseur'])->group(function () {
