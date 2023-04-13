@@ -17,6 +17,14 @@ Route::get('/boutique', function () {
     return view('boutique');
 })->name("boutique");
 
+Route::get('/list-achat', function () {
+    return view('list-achat');
+})->name("list-achat");
+
+Route::get('/favoris', function () {
+    return view('favoris');
+})->name("favoris");
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
