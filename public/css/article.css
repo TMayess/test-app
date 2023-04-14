@@ -7,17 +7,24 @@
     margin: 0;
     flex-basis: 55%;
 }
+.article-details-pa button{
+    background-color: #85586D;
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+border: 2px solid #85586D;
+    padding: 15px 35px;
+}
+.article-details-pa button:hover{
+    background-color: white;
+    color: #85586D;
+
+}
 
 .part-detail{
     height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    flex-wrap: nowrap;
-    justify-content: space-between;
     padding: 60px;
     background-color: #FCF8F4;
-    align-items: center;
 
 }
 .n-meuble p{
@@ -109,12 +116,8 @@
 .div-marker div{
     margin-top: 10px;
     display: inline-block;
-    width: 25px;
     border-radius: 15px;
-    height: 25px;
     margin-right: 5px;
-    background-color: #85586D;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 

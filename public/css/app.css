@@ -148,9 +148,6 @@ article p{
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-article img{
-    width: 320px;
-}
 article h5{
     font-size: 15px;
     font-weight: bold;
@@ -524,10 +521,12 @@ select{
 }
 .list-article-boutique img{
     max-width: 100%;
+  height: auto;
+  min-height: 300px;
+
 }
 .list-article-boutique div{
     flex-basis: 30%;
-    min-height:350px;
     min-width: 310px;
     background-color: #FFF;
     padding: 10px;

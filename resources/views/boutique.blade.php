@@ -128,94 +128,24 @@
 
     </div>
     <article class="list-article-boutique">
+        @foreach($products as $product)
         <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
+            <img src="{{$product->image}}" alt="">
+            <h5>{{$product->name}}</h5>
+            <strong>{{$product->price}}</strong>
+            <br>
+           <a href="{{route('produit',$product->id)}}">Voir Article</a>
         </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
-        <div>
-            <img src="images/meuble-tv.jpg" alt="">
-            <h5>nom meuble</h5>
-            <h6>10 000DA</h6>
-        </div>
+
+       @endforeach
 
     </article>
 </section>
+@if (session('success'))
+    <script>
+        alert('{{ session('success') }}');
+    </script>
+@endif
 
 
 @include('part.footer')

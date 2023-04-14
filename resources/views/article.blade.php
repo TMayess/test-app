@@ -3,14 +3,13 @@
 @section('content')
 
 
-{{$product = new Product}}
 <header>
     @include('part.navbar')
 </header>
 
 <section class="section-pa">
     <article class="article-image-pa">
-        <img width="500px" src="{{ asset(Storage::url($product->image)) }}" alt="">
+        <img width="500px" src="{{$product->image}}" alt="">
           {{-- <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
 <div class="swiper-wrapper">
   <div class="swiper-slide">
@@ -51,59 +50,60 @@
     <article class="article-details-pa">
         <div class="part-detail">
 
-            <div>
-                <div class="n-meuble">
-                    <h6>Meuble</h6>
+            <div class="n-meuble">
+                <h6>Meuble</h6>
+            </div>
+
+            <div class="n-product">
+                <h3>{{$product->name}}</h3>
+            </div>
+
+            <div class="div-avis">
+                <img src="images/stars.png" alt="">
+                <h5>8/10</h5>
+                <span>11 Achats</span>
+            </div>
+
+
+            <div class="div-description">
+                <p>{{$product->description}}</p>
+            </div>
+            <div class="taille">
+                
+                <div>
+                    <h6>langueur</h6>
+                    <span>50cm</span>
                 </div>
-
-                <div class="n-product">
-                    <h3>{{$product->name}}</h3>
+                <div>
+                    <h6>largeur</h6>
+                    <span>40cm</span>
                 </div>
-
-                <div class="div-avis">
-                    <img src="images/stars.png" alt="">
-                    <h5>8/10</h5>
-                    <span>11 Achats</span>
+                <div>
+                    <h6>Profondeur</h6>
+                    <span>59cm</span>
                 </div>
+            </div>
 
+            <div class="matiere">
+                <h6>Matière</h6>
+                <p>{{$product->materials}}</p>
+            </div>
 
-                <div class="div-description">
-                    <p>{{$product->description}}</p>
+            <div class="marker">
+                <h6>Couleur </h6>
+                <div class="div-marker">
+                    <div>{{$product->color}}</div>
                 </div>
-                <div class="taille">
-                    <div>
-                        <h6>langueur</h6>
-                        <span>50cm</span>
-                    </div>
-                    <div>
-                        <h6>largeur</h6>
-                        <span>40cm</span>
-                    </div>
-                    <div>
-                        <h6>Profondeur</h6>
-                        <span>59cm</span>
-                    </div>
-                </div>
-
-                <div class="matiere">
-                    <h6>Matière</h6>
-                    <p>{{$product->materials}}</p>
-                </div>
-
-                <div class="marker">
-                    <h6>Couleur </h6>
-                    <div class="div-marker">
-                        <div>{{$product->name}}</div>
-                    </div>
-                </div>
+            </div>
 
 
 
-                <div class="buy-article">
-                    <span>{{$product->price}} DZD</span>
-                    <button>Acheter</button>
-                </div>
-
+            <div class="buy-article">
+                <span>{{$product->price}} DZD</span>
+                <form action="{{route('achat',$product->id)}}" method="POST" >
+                    @csrf
+                    <button type="submit">Acheter</button>
+                </form>
             </div>
 
 

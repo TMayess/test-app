@@ -15,8 +15,9 @@ Route::get('/', function () {
 })->name("accueil");
 
 Route::get('/boutique',[BoutiqueController::class, 'index'])->name("boutique");
-Route::get('/produit',[BoutiqueController::class, 'produit'])->name("produit");
-Route::post('/produit',[BoutiqueController::class, 'addAchat'])->name("produit");
+Route::get('/produit/{product}',[BoutiqueController::class, 'produit'])->name("produit");
+
+Route::post('/produit/{id}',[BoutiqueController::class, 'addAchat'])->name("achat");
 
 
 Route::get('/list-achat', function () {
