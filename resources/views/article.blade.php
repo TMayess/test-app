@@ -1,13 +1,17 @@
 @extends('app')
 
 @section('content')
+
+
+{{$product = new Product}}
 <header>
     @include('part.navbar')
 </header>
 
 <section class="section-pa">
     <article class="article-image-pa">
-          <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
+        <img width="500px" src="{{ asset(Storage::url($product->image)) }}" alt="">
+          {{-- <div style="--swiper-navigation-color: #fff; --swiper-pagination-color: #fff" class="swiper mySwiper2">
 <div class="swiper-wrapper">
   <div class="swiper-slide">
     <img src="images/meuble1.webp" />
@@ -42,7 +46,7 @@
       </div>
 
 </div>
-</div>
+</div> --}}
     </article>
     <article class="article-details-pa">
         <div class="part-detail">
@@ -51,9 +55,9 @@
                 <div class="n-meuble">
                     <h6>Meuble</h6>
                 </div>
-                
+
                 <div class="n-product">
-                    <h3>Nom du produit</h3>
+                    <h3>{{$product->name}}</h3>
                 </div>
 
                 <div class="div-avis">
@@ -64,7 +68,7 @@
 
 
                 <div class="div-description">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudianda Repudiandae dolorum quidem recusandae corrupti deleniti doloribus illo! Totam, dolore recusandae. Eligendi voluptatibus fugit optio esse quos fuga ab temporibus officia ratione!</p>
+                    <p>{{$product->description}}</p>
                 </div>
                 <div class="taille">
                     <div>
@@ -83,27 +87,20 @@
 
                 <div class="matiere">
                     <h6>Matière</h6>
-                    <p>S lohh n l merzag</p>
+                    <p>{{$product->materials}}</p>
                 </div>
 
                 <div class="marker">
                     <h6>Couleur </h6>
                     <div class="div-marker">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
+                        <div>{{$product->name}}</div>
                     </div>
                 </div>
 
 
 
-
-
-
                 <div class="buy-article">
-                    <span>1000.00 DZD</span>
+                    <span>{{$product->price}} DZD</span>
                     <button>Acheter</button>
                 </div>
 

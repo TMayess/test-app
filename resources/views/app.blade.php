@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/profile.css')}}">
     <link rel="stylesheet" href="{{asset('css/gestion.css')}}">
     {{-- <link rel="stylesheet" href="css/part/navbar.css"> --}}
-    {{-- <link rel="stylesheet" href="css/article.css"> --}}
+    <link rel="stylesheet" href="{{asset('css/article.css')}}">
 
     @vite('resources/js/app.js')
     @vite('resources/css/app.css')

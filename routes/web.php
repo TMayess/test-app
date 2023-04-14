@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BoutiqueController;
 use App\Http\Controllers\Admin\UserController;
 
 
@@ -13,9 +14,10 @@ Route::get('/', function () {
     return view('accueil');
 })->name("accueil");
 
-Route::get('/boutique', function () {
-    return view('boutique');
-})->name("boutique");
+Route::get('/boutique',[BoutiqueController::class, 'index'])->name("boutique");
+Route::get('/produit',[BoutiqueController::class, 'produit'])->name("produit");
+Route::post('/produit',[BoutiqueController::class, 'addAchat'])->name("produit");
+
 
 Route::get('/list-achat', function () {
     return view('list-achat');
