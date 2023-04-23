@@ -1,3 +1,5 @@
+import Livewire from 'livewire';
+window.livewire = new Livewire();
 
 window.onload = function() {
     alert("Hello World!");

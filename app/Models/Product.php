@@ -2,8 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Meuble;
+use App\Models\Literie;
+use App\Models\Position;
+use App\Models\Accessoire;
+use App\Models\categories;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -14,10 +19,33 @@ class Product extends Model
         'name',
         'description',
         'price',
-        'image',
+        'image_principal',
         'reference_product',
-        'dimensions',
-        'materials',
-        'color'
+        'slug',
     ];
+
+    public function meuble()
+    {
+        return $this->hasOne(Meuble::class);
+    }
+
+    public function literie()
+    {
+        return $this->hasOne(Literie::class);
+    }
+
+    public function accessoire()
+    {
+        return $this->hasOne(Accessoire::class);
+    }
+
+    public function categorie()
+    {
+        return $this->hasOne(categories::class);
+    }
+
+    public function positions()
+    {
+        return $this->belongsToMany(Position::class);
+    }
 }

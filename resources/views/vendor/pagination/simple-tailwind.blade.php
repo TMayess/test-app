@@ -21,5 +21,4 @@
                 {!! __('pagination.next') !!}
             </span>
         @endif
-    </nav>
 @endif

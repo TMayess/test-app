@@ -20,23 +20,20 @@ Route::get('/produit/{product}',[BoutiqueController::class, 'produit'])->name("p
 Route::post('/produit/{id}',[BoutiqueController::class, 'addAchat'])->name("achat");
 
 
-Route::get('/list-achat', function () {
-    return view('list-achat');
-})->name("list-achat");
-
-Route::get('/favoris', function () {
-    return view('favoris');
-})->name("favoris");
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/list-achat', [BoutiqueController::class,'list'])->name("list-achat");
+    Route::get('/favoris/{id}', [BoutiqueController::class,'delete_favoris'])->name("delete_function");
+    Route::post('/favoris/{id}', [BoutiqueController::class,'addFavoris'])->name("addFavoris");
+
+
+    Route::get('/favoris', [BoutiqueController::class,'wishlist'])->name("favoris");
 });
 
 // Route::get('posts', [PostController::class,'index'])->name('posts.index');
@@ -44,9 +41,9 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/gestion-utilisateur', [ProductController::class, 'index'])->name('utilisateur.index');
+// Route::get('/gestion-utilisateur', [ProductController::class, 'index'])->name('utilisateur.index');
 
-Route::namespace('Admin')->prefix('admin')->middleware(['auth:sanctum', 'verified', 'UserRole:admin'])->group(function () {
+Route::namespace('Admin')->prefix('admin')->middleware(['auth:sanctum','UserRole:admin'])->group(function () {
     Route::get('/gestion-utilisateur', [UserController::class,'index'])->name('utilisateur.index');
     Route::get('/utilisateur-edit/{user}', [UserController::class, 'edit'])->name('utilisateur.edit');
     Route::post('/utilisateur-edit/{user}', [UserController::class, 'update'])->name('utilisateur.update');
@@ -54,11 +51,12 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth:sanctum', 'verifie
 
 });
 
-Route::prefix('admin')->middleware(['auth:sanctum', 'verified', 'UserRole:admin,fournisseur'])->group(function () {
+
+Route::prefix('admin')->middleware(['auth:sanctum','UserRole:fournisseur'])->group(function () {
     Route::get('/gestion-article', [ProductController::class,'index'])->name('article.index');
     Route::post('/gestion-article', [ProductController::class,'store'])->name('article.store');
-    Route::get('/gestion-pack', [ProductController::class,'index2'])->name('pack.index');
-    Route::post('/b', [ProductController::class,'SearchProduct'])->name('search.products');
+    Route::get('/gestion-article/{id}', [BoutiqueController::class,'delete_article'])->name("delete_article");
+
 });
 
 // Route::prefix('admin')->name('admin.')->middleware('can:manage-users')->group(function(){

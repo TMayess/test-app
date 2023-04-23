@@ -151,7 +151,6 @@ article p{
 article h5{
     font-size: 15px;
     font-weight: bold;
-    margin: 5px ;
 }
 article h6{
     font-size: 15px;
@@ -519,7 +518,7 @@ select{
     flex-wrap: wrap;
     gap: 30px;
 }
-.list-article-boutique img{
+.list-article-boutique .img-a{
     max-width: 100%;
   height: auto;
   min-height: 300px;
@@ -544,7 +543,6 @@ select{
 div h5{
     font-size: 15px;
     font-weight: bold;
-    margin: 5px ;
 }
 div h6{
     font-size: 15px;
@@ -565,7 +563,7 @@ div h6{
     align-items: center;
     margin-top: 20px;
     padding-right: 30px;
-    margin-bottom: 70px;
+    margin-bottom: 40px;
   }
 
   .pagination a {

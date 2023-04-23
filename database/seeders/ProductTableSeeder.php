@@ -9,27 +9,22 @@ use Faker\Factory as FakerFactory;
 
 class ProductTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
+
     public function run()
     {
-
         $faker = FakerFactory::create();
+
         for ($i = 0; $i < 10; $i++) {
             $product = new Product;
             $product->name = $faker->word;
             $product->description = $faker->sentence;
+            $product->image_principal = $faker->imageUrl();
             $product->price = $faker->randomFloat(2, 10, 100);
-            $product->image = $faker->imageUrl();
-            $product->reference_product = uniqid(); // génère une référence unique
-            $product->dimensions = $faker->randomNumber() . ' x ' . $faker->randomNumber() . ' x ' . $faker->randomNumber();
-            $product->materials = $faker->word . ', ' . $faker->word . ', ' . $faker->word;
-            $product->color = $faker->colorName;
+            $product->reference_product = uniqid();
+            $product->slug = $faker->slug;
+            $product->fournisseur_id = 1;
+            $product->categorie_id = $faker->numberBetween(1, 5);
             $product->save();
         }
-
     }
 }

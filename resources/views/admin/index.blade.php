@@ -35,7 +35,6 @@
 @section('content')
 
 
-@include('part.sidebarnav')
 <section class="section-ajout">
 
 <div class="div-crud">

@@ -1,10 +1,14 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\Meuble;
+use App\Models\Literie;
+use App\Models\Accessoire;
+use App\Models\Category;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
-return new class extends Migration
+class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,21 +18,34 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
+
+
+            $table->bigIncrements('id');
             $table->string('name');
             $table->text('description');
+            $table->string('tag');
+            $table->tinyInteger('valide')->default(0);
+            $table->string('image_principal')->nullable();
             $table->decimal('price', 8, 2);
-            $table->string('image')->nullable();
-            $table->string('reference_product')->unique();
-            $table->string('dimensions')->nullable();
-            $table->string('materials')->nullable();
-            $table->string('color')->nullable();
+            $table->string('reference_product');
+            $table->unsignedBigInteger('fournisseur_id');
+            $table->unsignedBigInteger('categorie_id');
             $table->timestamps();
+            $table->foreign('fournisseur_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
+
         });
     }
+ // $table->unsignedBigInteger('categorie_id');
+            //$table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down()
     {
         Schema::dropIfExists('products');
     }
-};
+}

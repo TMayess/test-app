@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="{{asset('css/part/navbar.css')}}">
     <link rel="stylesheet" href="{{asset('css/article.css')}}">
 
+
+
+    @livewireStyles
+
     @vite('resources/js/app.js')
     @vite('resources/css/app.css')
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -30,7 +34,7 @@
 
 @yield('content')
 
-
+@livewireScripts
 
 <body>
 

@@ -11,7 +11,7 @@
 
             <h1>Historique des achats</h1>
 
-            
+
             <form action="{{ route('article.index') }}" method="POST">
                 @csrf
 
@@ -25,19 +25,21 @@
          <th scope="col">Nom</th>
         <th scope="col">Description</th>
         <th scope="col">Prix</th>
-        <th scope="col">Date d'achat</th>
-        <th class="last-col" scope="col"></th>
+        <th class="last-col" scope="col">Date d'achat</th>
 
         </tr>
         </thead>
             <tbody>
+              @foreach($achats as $a)
                     <tr>
-                    <td><img width="60px" src="" width="20px" alt=""></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    </tr>
+                    <td><img width="60px" src="{{$a->produit_image}}" width="20px" alt=""></td>
+                    <td>{{$a->produit_name}}</td>
+                    <td>{{$a->produit_description}}</td>
+                    <td>{{$a->produit_price}}</td>
+                    <td>{{ date('d/m/Y', strtotime($a->created_at)) }}</td>
 
+                    </tr>
+               @endforeach
             </tbody>
         </table>
 
@@ -55,7 +57,6 @@
         justify-content: center;
         background-color: #fdfdfd;
     }
-
     .div-list{
         width: 85%;
         margin-top: 50px;
@@ -75,7 +76,6 @@
         display: flex;
         justify-content: center;
     }
-
     table button{
         background: #FCF8F4;
         padding: 15px 20px;
