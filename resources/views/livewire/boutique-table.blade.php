@@ -1,5 +1,7 @@
 <div>
 
+
+
     <div class="div-space-recherche">
         <div class="div-recherche">
             <input type="text" id="Recherche" name="recherche"  placeholder="Rechercher des article ..." wire:model.debounce.500ms="search">
@@ -10,96 +12,84 @@
         <h1 class="categorie-title">CATEGORIE</h1>
         <div class="selection-trier">
             <p>Trier</p>
-            <select name="select-trier" id="select-trier">
-                <option value="par prix" selected>Par prix <img src="images/top.png" alt=""></option>
-                <option value="Par reduction">Par reduction</option>
-                <option value="par date de publication">Par date de publication</option>
-            </select>
+            <select name="select-trier" id="select-trier" wire:model="tri">
+  <option value="par-prix-asc" selected class="selected">Par prix ^</option>
+  <option value="par-prix-desc" selected class="selected">Par prix </option>
+  <option value="par-date-asc" class="unselected">Par date de publication ^</option>
+  <option value="par-date-desc" class="unselected">Par date de publication</option>
+
+</select>
         </div>
     </div>
+
     <div class="nav-categorie">
 
-        <div id="tout" class="item">
-            <a class="sub-btn" href="#tout">Tout<img class="dropdown" src="images/icons8-vers-l'avant-52 (2).png" alt=""></a>
-        </div>
-        <hr>
-        <div id="chambre" class="item">
-            <a class="sub-btn" href="#chambre">Chambre<img class="dropdown" src="images/icons8-vers-l'avant-52 (2).png" alt=""></a>
-            <div class="sub-menu">
-                <a href="#">Lits</a>
-                <a href="#">Matelas</a>
-                <a href="#">Sommiers</a>
-                <a href="#">couettes, couvre-lits, draps et taies d'oreiller</a>
-                <a href="#">oreillers</a>
-                <a href="#">Armoires</a>
-                <a href="#">Commodes</a>
-                <a href="#">Dressings</a>
-                <a href="#">Tables de nuit </a>
-            </div>
-        </div>
-        <hr>
-        <div id="salon" class="item">
-            <a class="sub-btn" href="#salon">Salon<img class="dropdown" src="images/icons8-vers-l'avant-52 (2).png" alt=""></a>
-            <div class="sub-menu">
-                <a href="">Canapés</a>
-                <a href="">Fauteuils</a>
-                <a href="">Table basses</a>
-                <a href="">Meuble TV</a>
-                <a href="">Bibliothéque</a>
-                <a href="">Etagères</a>
-                 <a href="">Poufs </a>
-                 <a href="">Ensembles de salon  </a>
-            </div>
-        </div>
-        <hr>
-        <div id="salle-manger" class="item">
-            <a class="sub-btn" href="#salle-manger">Salle a manger<img class="dropdown" src="images/icons8-vers-l'avant-52 (2).png" alt=""></a>
-            <div class="sub-menu">
-                <a href="">Tables</a>
-                <a href="">Chaises</a>
-                <a href="">Buffets</a>
-                <a href="">Vitrines</a>
-            </div>
-        </div>
-        <hr>
-        <div id="cuisine" class="item">
-            <a class="sub-btn" href="#cuisine">Cuisine<img class="dropdown" src="images/icons8-vers-l'avant-52 (2).png" alt=""></a>
-            <div class="sub-menu">
-                <a href="">Meubles de rangement</a>
-                <a href="">Table et chaises de cuisine</a>
-                <a href="">Eviers et robinets</a>
-            </div>
-        </div>
-        <hr>
-        <div id="salle-bain" class="item">
-            <a class="sub-btn" href="#salle-bain">Salle de bain<img class="dropdown" src="images/icons8-vers-l'avant-52 (2).png" alt=""></a>
-            <div class="sub-menu">
-                <a href="">Meubles sous-vasque</a>
-                <a href="">colonnes de rangement</a>
-                <a href="">Baignoires, douches et Robinetterie</a>
-                <a href="">Accessoires de salle de bain</a>
-            </div>
-        </div>
-        <hr>
-        <div id="bureau" class="item">
-            <a class="sub-btn" href="#bureau">Bureau<img class="dropdown" src="images/icons8-vers-l'avant-52 (2).png" alt=""></a>
-            <div class="sub-menu">
-                <a href="">Bureaux</a>
-                <a href="">Chaises de bureau</a>
-                <a href="">Rangements de bureau</a>
-                <a href="">Fauteuils de direction</a>
-                <a href="">Tables de réunion</a>
-            </div>
-        </div>
-
-
-
-
+    <div id="chambre" class="item">
+        <label>
+            <input type="checkbox" wire:model="categories" value="chambre">
+            Chambre
+    </label>
     </div>
+    <hr>
+    <div id="salon" class="item">
+        <label>
+            <input type="checkbox" wire:model="categories" value="salon">
+            Salon
+        </label>
+    </div>
+    <hr>
+    <div id="salle-manger" class="item">
+        <label>
+            <input type="checkbox" wire:model="categories" value="salle-manger">
+            Salle à manger
+        </label>
+    </div>
+    <hr>
+    <div id="cuisine" class="item">
+        <label>
+            <input type="checkbox" wire:model="categories" value="cuisine">
+            Cuisine
+        </label>
+    </div>
+    <hr>
+    <div id="salle-bain" class="item">
+        <label>
+            <input type="checkbox" wire:model="categories" value="salle-bain">
+            Salle de bain
+        </label>
+    </div>
+    <hr>
+    <div id="bureau" class="item">
+        <label>
+            <input type="checkbox" wire:model="categories" value="bureau">
+            Bureau
+        </label>
+    </div>
+
+    <div class="div-input-product">
+
+
+        @php
+        use App\Models\categories;
+        $categories = categories::all();
+        @endphp
+        <select class="div-input-product" name="categorie" id="categorie" wire:model="categorieId">
+
+            <option selected>Tout</option>
+
+
+            @foreach ($categories as $categorie)
+                <option value="{{$categorie->id}}">{{$categorie->name}}</option>
+            @endforeach
+
+        </select>
+       </div>
+</div>
+
     <article class="list-article-boutique">
         @foreach($products as $product)
         <div>
-            <img class="img-a" src="{{$product->image_principal}}" alt="">
+            <img class="img-a" src="{{ asset(Storage::url($product->image_principal))}}" alt="">
             <h5>{{$product->name}}</h5>
             <strong>{{$product->price}}</strong>
             <br>
@@ -136,4 +126,34 @@
             window.location.href = '{{ route("boutique") }}';
         });
     });
+
+// Parcourir tous les éléments et ajouter un écouteur d'événement de clic
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+checkboxes.forEach(function(checkbox) {
+  checkbox.addEventListener('click', function() {
+    const selectedCategories = [];
+
+    checkboxes.forEach(function(checkbox) {
+      if (checkbox.checked) {
+        selectedCategories.push(checkbox.value);
+      }
+    });
+
+    // Utilisez selectedCategories pour faire quelque chose avec les catégories sélectionnées
+  });
+});
+
 </script>
+
+<style>
+    .nav-categorie .item {
+  background-color: #fff; /* Couleur de fond par défaut */
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.nav-categorie .item.selected {
+  background-color: #ff0; /* Couleur de fond lorsque sélectionné */
+}
+</style>

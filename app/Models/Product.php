@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\User;
 use App\Models\Meuble;
 use App\Models\Literie;
 use App\Models\Position;
@@ -19,9 +20,11 @@ class Product extends Model
         'name',
         'description',
         'price',
+        'valide',
         'image_principal',
         'reference_product',
         'slug',
+        'fournisseur_id'
     ];
 
     public function meuble()
@@ -48,4 +51,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Position::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

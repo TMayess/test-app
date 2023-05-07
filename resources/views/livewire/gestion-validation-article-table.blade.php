@@ -3,7 +3,7 @@
         <div class="div-list">
 
             <div>
-                <h1>Modifier et supprimer un article</h1>
+                <h1>confirmer et supprimer un article</h1>
             </div>
 
             <div class="div-rech">
@@ -11,7 +11,6 @@
                     <input type="text" name="recherche" id="search" placeholder="Recherche" wire:model="search"  >
                 </div>
             </div>
-            <div class="div-btn"><button onclick="afficherDiv()">Ajouter un article</button></div>
             <form action="{{ route('article.index') }}" method="POST">
                 @csrf
 
@@ -30,16 +29,14 @@
         </thead>
             <tbody>
                 @foreach($products as $product)
-                {{-- <td><img width="60px" src="{{$product->produit_image}}" width="20px" alt=""> --}}
-                    <td><img width="60px" src="{{ asset(Storage::url($product->image_principal)) }}" width="20px" alt=""></td>
 
-                    {{-- <td><img width="60px" src="{{ asset($product->image_principal)}}" width="20px" alt=""></td> --}}
+                    <tr>
+                    <td><img width="60px" src="{{ asset(Storage::url($product->image_principal)) }}" width="20px" alt=""></td>
                     <td>{{$product->name}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->price}}</td>
                     <td>{{$product->reference_product}}</td>
-
-                <td class="a-action"><a href="">Modifier</a><a href="{{route('delete_article',$product->id)}}">Supprimer</a></td>
+                    <td class="a-action"><a href="#" wire:click.prevent="valide_article({{ $product->id }})">valider</a><a href="#" wire:click.prevent="drop_article({{ $product->id }})">Supprimer</a></td>
 
                     </tr>
                 @endforeach

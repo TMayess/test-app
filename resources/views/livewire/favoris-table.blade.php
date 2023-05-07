@@ -29,7 +29,7 @@
                         <tbody>
                             @foreach($wish as $w)
                             <tr>
-                            <td><img width="60px" src="{{$w->produit_image}}" width="20px" alt=""></td>
+                            <td><img width="60px" src="{{ asset(Storage::url($w->image_principal)) }}" width="20px" alt=""></td>
                             <td>{{$w->produit_name}}</td>
                             <td>{{$w->produit_description}}</td>
                             <td>{{$w->produit_price}}</td>

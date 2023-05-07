@@ -32,7 +32,7 @@
             <tbody>
               @foreach($achats as $a)
                     <tr>
-                    <td><img width="60px" src="{{$a->produit_image}}" width="20px" alt=""></td>
+                    <td><img width="60px" src="{{ asset(Storage::url($a->image_principal)) }}" width="20px" alt=""></td>
                     <td>{{$a->produit_name}}</td>
                     <td>{{$a->produit_description}}</td>
                     <td>{{$a->produit_price}}</td>

@@ -17,6 +17,11 @@
                 <li><a class="{{ request()-> is('article.index') ? 'active' : ''}}" href="{{ route('article.index')}}">Gestion article</a></li>
             @endif
 
+            @if($user->role == "admin")
+                <li><a class="{{ request()-> is('indexConfirm') ? 'active' : ''}}" href="{{ route('indexConfirm')}}">Gestion article</a></li>
+                <li><a class="{{ request()-> is('utilisateur.index') ? 'active' : ''}}" href="{{ route('utilisateur.index')}}">Gestion utilisateur</a></li>
+            @endif
+
             <li><a href="#"><div class="div-user" onclick="onClickToggle()"  >
                 <img width="25px" src="images/icons8-utilisateur-90.png" title="Mon compte" alt="">
                 <span>{{$user->name}} {{$user->firstname}}</span>

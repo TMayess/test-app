@@ -14,12 +14,67 @@ class BoutiqueTable extends Component
     use WithPagination;
 
     public string $search = '';
+    public $categories = [];
+    public $categorieId;
+    public $tri = 'par-prix';
+
+
     public function render()
-    {
-        return view('livewire.boutique-table',[
-            'products' => Product::where('name','LIKE', "%{$this->search}%")->paginate(12)
-        ]);
+{
+    $produit = Product::select('products.id', 'products.name', 'products.description', 'products.tag', 'products.valide', 'products.image_principal', 'products.price', 'products.categorie_id')
+        ->join('position_product', 'products.id', '=', 'position_product.produit_id')
+        ->join('positions', 'position_product.position_id', '=', 'positions.id')
+        ->join('categories', 'categories.id', '=', 'products.categorie_id')
+        ->where('products.name', 'LIKE', "%{$this->search}%")
+        ->where('valide', 1);
+
+    $categoriesPositions = [
+        'chambre' => 'Chambre',
+        'salon' => 'Salon',
+        'salle-manger' => 'Salle a manger',
+        'cuisine' => 'Cuisine',
+        'salle-bain' => 'Salle de bain',
+        'bureau' => 'Bureau'
+    ];
+    if (!empty($this->categorieId)) {
+        if(!($this->categorieId === "Tout")) {
+            $produit->where('products.categorie_id', '=', $this->categorieId);
+        }
     }
+
+
+    if ($this->tri === 'par-prix-asc') {
+        $produit->orderBy('price', 'asc');
+    } elseif ($this->tri === 'par-prix-desc') {
+        $produit->orderBy('price', 'desc');
+    }elseif ($this->tri === 'par-date-asc') {
+        $produit->orderBy('products.created_at', 'desc');
+    }elseif ($this->tri === 'par-date-desc') {
+        $produit->orderBy('products.created_at', 'asc');
+    }
+
+    $positions = [];
+
+    foreach ($this->categories as $categorie) {
+        if (array_key_exists($categorie, $categoriesPositions)) {
+            $positions[] = $categoriesPositions[$categorie];
+        }
+    }
+
+    if (!empty($positions)) {
+        $produit->whereIn('positions.name', $positions);
+    }
+
+    return view('livewire.boutique-table', [
+        'products' => $produit->distinct('products.id')->paginate(12)
+    ]);
+}
+
+    public function categoriesSelected($selectedIds)
+    {
+        $this->categories = $selectedIds;
+    }
+
 
     public function addFavoris($product_id)
     {
@@ -49,5 +104,10 @@ class BoutiqueTable extends Component
         $this->dispatchBrowserEvent('favorisAdded');
         }
 
+    }
+    public function handleRequest()
+    {
+        $categorie = Category::find($this->categorieId);
+        // Faire quelque chose avec la catégorie sélectionnée
     }
 }

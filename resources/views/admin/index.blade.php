@@ -34,10 +34,16 @@
 @extends('app')
 @section('content')
 
+<header>
+    @include('part.navbar')
+</header>
 
-<section class="section-ajout">
 
-<div class="div-crud">
+
+<livewire:gestion-user-table />
+
+
+{{-- <div class="div">
 
         <h1>Modifier et supprimer Utilisateur</h1>
 
@@ -77,7 +83,20 @@
     </table>
 
 
-</div>
-</section>
+</div> --}}
+
+
+
+<script>
+    function afficherDivUser() {
+        var div = document.getElementById("div-modif-user");
+        div.style.display = "flex";
+    }
+    function fermerDivUser() {
+        var div = document.getElementById("div-modif-user");
+        div.style.display = "none";
+    }
+</script>
+
 @endsection
 

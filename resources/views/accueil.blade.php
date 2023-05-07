@@ -35,73 +35,59 @@
 
     </header>
     <div class="div-space"></div>
+
+    @php
+use App\Models\Product;
+
+$topProducts = Product::select('products.id', 'products.name', 'products.description', 'products.tag', 'products.valide', 'products.image_principal', 'products.price')
+                        ->join('achats', 'products.id', '=', 'achats.product_id')
+                        ->groupBy('products.id', 'products.name', 'products.description', 'products.tag', 'products.valide', 'products.image_principal', 'products.price')
+                        ->orderByRaw('COUNT(achats.id) DESC')
+                        ->limit(3)
+                        ->get();
+    @endphp
     <section>
         <article>
             <h2>Produits populaires</h2>
             <p>Offrez-vous le meilleur du confort avec nos produits de meubles et de literie les plus populaires</p>
             <div class="list-article bg-article-pp">
-                <div>
-                    <img src="images/meuble1.webp" alt="">
-                    <h5>Meuble Vinyles en chêne</h5>
-                    <h6>10 000DA</h6>
-                </div>
-                <div>
-                    <img src="images/meuble2.webp" alt="">
-                    <h5>Fauteuil Jimi</h5>
-                    <h6>2 000DA</h6>
-                </div>
-                <div>
-                    <img src="images/meuble3.webp" alt="">
-                    <h5>Lit plateforme pin massif</h5>
-                    <h6>6 000DA</h6>
-                </div>
+               @foreach ($topProducts as $product)
+               <div>
+                <img  width="400px" src="{{asset(Storage::url($product->image_principal))}}" alt="">
+                <h5>{{$product->name}}</h5>
+                <h6>{{$product->price}}</h6>
+                 </div>
+
+               @endforeach
             </div>
 
         </article>
+        @php
+
+
+$produits = Product::select('products.id', 'products.name', 'products.description', 'products.tag', 'products.valide', 'products.image_principal', 'products.price')
+                   ->where('valide', 1)
+                   ->latest('created_at')
+                   ->take(3)
+                   ->get();
+        @endphp
         <article>
             <h2>Nos nouveau produits</h2>
             <p>Découvrez nos derniers produits, conçus avec les dernières tendances en matière de design et de fonctionnalité,pour apporter une touche de modernité à votre intérieur</p>
             <div class="list-article bg-article-np">
+                @foreach ($produits as $produit)
                 <div>
-                    <img src="images/meuble4.webp" alt="">
-                    <h5>Lits superposés</h5>
-                    <h6>12 000DA</h6>
+                    <img width="400px" src="{{asset(Storage::url($produit->image_principal))}}" alt="">
+                    <h5>{{$produit->name}}</h5>
+                    <h6>{{$produit->price}} DZD</h6>
                 </div>
-                <div>
-                    <img src="images/meuble5.webp" alt="">
-                    <h5>Meuble de cuisine </h5>
-                    <h6>9 000DA</h6>
-                </div>
-                <div>
-                    <img src="images/meuble6.webp" alt="">
-                    <h5>Table de bar haute</h5>
-                    <h6>10 000DA</h6>
-                </div>
+                @endforeach
+
+
             </div>
 
         </article>
-        <article>
-            <h2>Nos meilleurs promos</h2>
-            <p>Profitez de nos offres promotions exceptionnelles et donnez à votre maison un nouveau look à petit prix </p>
-            <div class="list-article bg-article-mp">
-                <div>
-                    <img src="images/meuble7.webp" alt="">
-                    <h5>Buffet 3 portes Compo</h5>
-                    <h6>21 000DA</h6>
-                </div>
-                <div>
-                    <img src="images/meuble8.webp" alt="">
-                    <h5>Fauteuil de table vintage</h5>
-                    <h6>9 000DA</h6>
-                </div>
-                <div>
-                    <img src="images/meuble9.webp" alt="">
-                    <h5>Meuble Vinyle vintage</h5>
-                    <h6>11 000DA</h6>
-                </div>
-            </div>
 
-        </article>
 
         <article class="contact-us">
             <span>

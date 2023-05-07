@@ -21,7 +21,7 @@ class ProductTableSeeder extends Seeder
             $product->image_principal = $faker->imageUrl();
             $product->price = $faker->randomFloat(2, 10, 100);
             $product->reference_product = uniqid();
-            $product->slug = $faker->slug;
+            $product->tag = '#accessoire';
             $product->fournisseur_id = 1;
             $product->categorie_id = $faker->numberBetween(1, 5);
             $product->save();

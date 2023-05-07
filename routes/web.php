@@ -8,16 +8,16 @@ use App\Http\Controllers\Admin\UserController;
 
 
 
+Route::middleware('verifiedValidation')->group(function () {
+
+    Route::get('/', function () {
+        return view('accueil');
+    })->name("accueil");
+    Route::get('/boutique',[BoutiqueController::class, 'index'])->name("boutique");
+    Route::get('/produit/{product}',[BoutiqueController::class, 'produit'])->name("produit");
 
 
-Route::get('/', function () {
-    return view('accueil');
-})->name("accueil");
-
-Route::get('/boutique',[BoutiqueController::class, 'index'])->name("boutique");
-Route::get('/produit/{product}',[BoutiqueController::class, 'produit'])->name("produit");
-
-Route::post('/produit/{id}',[BoutiqueController::class, 'addAchat'])->name("achat");
+});
 
 
 // Route::get('/dashboard', function () {
@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/list-achat', [BoutiqueController::class,'list'])->name("list-achat");
     Route::get('/favoris/{id}', [BoutiqueController::class,'delete_favoris'])->name("delete_function");
     Route::post('/favoris/{id}', [BoutiqueController::class,'addFavoris'])->name("addFavoris");
+    Route::post('/produit/{id}',[BoutiqueController::class, 'addAchat'])->name("achat");
 
 
     Route::get('/favoris', [BoutiqueController::class,'wishlist'])->name("favoris");
@@ -47,12 +48,15 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth:sanctum','UserRole
     Route::get('/gestion-utilisateur', [UserController::class,'index'])->name('utilisateur.index');
     Route::get('/utilisateur-edit/{user}', [UserController::class, 'edit'])->name('utilisateur.edit');
     Route::post('/utilisateur-edit/{user}', [UserController::class, 'update'])->name('utilisateur.update');
-    Route::delete('/utilisateur/{user}', [UserController::class, 'destroy'])->name('utilisateur.destroy');
+    Route::get('/utilisateur/{user}', [UserController::class, 'destroy'])->name('utilisateur.destroy');
+    // Route::get('/gestion-article/{user}', [ProductController::class, 'valide_article'])->name('valide_article');
+    Route::get('/gestion-article', [ProductController::class, 'indexConfirm'])->name('indexConfirm');
+
 
 });
 
 
-Route::prefix('admin')->middleware(['auth:sanctum','UserRole:fournisseur'])->group(function () {
+Route::middleware(['auth:sanctum','UserRole:fournisseur'])->group(function () {
     Route::get('/gestion-article', [ProductController::class,'index'])->name('article.index');
     Route::post('/gestion-article', [ProductController::class,'store'])->name('article.store');
     Route::get('/gestion-article/{id}', [BoutiqueController::class,'delete_article'])->name("delete_article");

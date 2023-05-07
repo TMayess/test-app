@@ -23,42 +23,37 @@ class ProductController extends Controller
 
     public function store(ProductFormRequest $request){
 
-        $chambres = collect(); // Initialisation de la liste
-
-
-
+        $chambres = collect();
         $fournisseur = Auth::user();
 
         $type = $request->input('produit');
         $validated = $request->validated();
         $image=array();
 
-        if($files=$request->file('image')){
-            foreach($files as $file){
-                $image_name = md5(rand(1000,10000));
-                $ext=strtolower($file->getClientOriginalExtension());
-                $image_full_name= $image_name.'.'.$ext;
-                $upload_path = 'public/multiple_image/';
-                $image_url = $upload_path.$image_full_name;
-                $file->move($upload_path,$image_full_name);
-                $image[]= $image_url;
-            }
-        }
+
 
         $product = new Product($validated);
         $product->tag = "#".$request->input('produit');
         $product->fournisseur_id = $fournisseur->id;
-        $product->categorie_id = $request->input('categorie');;
+
+        $image_path = $request->file('imagePrincipal')->store('image/products/imagePrincipal', 'public');
+        $product->image_principal = $image_path;
+
+
+        $product->categorie_id = $request->input('categorie');
 
         $product->save();
         $product_id = $product->id;
 
-        $image_urls = implode('|', $image);
+        $images = $request->file('images');
+        foreach($images as $image) {
+            $image_path = $image->store('image/products/imageS', 'public');
 
-        DB::table('product_images')->insert([
-            'image' => $image_urls,
-            'product_id' => $product_id
-        ]);
+            DB::table('product_images')->insert([
+                'image' => $image_path,
+                'product_id' => $product_id
+            ]);
+        }
 
         if ($type=='meuble'){
             DB::table('meubles')->insert([
@@ -122,8 +117,14 @@ class ProductController extends Controller
     }
     return response()->json([
         'products' => $products
-    ]);
+    ]
+);
     }
+
+    public function indexConfirm () {
+        return view('admin.confirmArticle');
+    }
+
 
 
 

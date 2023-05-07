@@ -21,6 +21,8 @@ class ProductFormRequest extends FormRequest
             'dimensions' => 'nullable|string|max:255',
             'materials' => 'nullable|string|max:255',
             'color' => 'nullable|string|max:255',
+            'image1' => 'image|max:2048',
+
         ];
     }
 }

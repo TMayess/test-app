@@ -58,13 +58,20 @@
                     </div>
 
                     <div class="div-input-product">
-                        <label for="image">Image</label>
-                        <input type="file" name="image[]"  id="image" multiple class="form-control">
-
-                        @error('image')
+                        <label for="imagePrincipal">Image</label>
+                        <input type="file" name="imagePrincipal"  id="imagePrincpal" class="form-control">
+                        @error('imagePrincipal')
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
+                    <div class="div-input-product">
+                        <label for="images">Image :</label>
+                        <input type="file" name="images[]"  id="images" multiple class="form-control">
+                        @error('images')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+                    </div>
+
 
                     <div class="div-input-product">
                         <label for="reference_product">Référence</label>
