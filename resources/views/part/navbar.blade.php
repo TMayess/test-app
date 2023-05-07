@@ -2,7 +2,7 @@
 <?php $user = Auth::user(); ?>
 <nav>
     <div class="logo">
-        <img src="images/monlogo.png" width="60px" >
+        <img src="{{asset('images/monlogo.png')}}" width="60px" >
     </div>
     <div class="div-nav">
         <ul class="nav-page mobile-menu">
@@ -23,7 +23,7 @@
             @endif
 
             <li><a href="#"><div class="div-user" onclick="onClickToggle()"  >
-                <img width="25px" src="images/icons8-utilisateur-90.png" title="Mon compte" alt="">
+                <img width="25px" src="{{asset('images/icons8-utilisateur-90.png')}}" title="Mon compte" alt="">
                 <span>{{$user->name}} {{$user->firstname}}</span>
                 </div></a></li>
 
@@ -49,7 +49,7 @@
 
 
     </div>
-    <img src="images/menu-btn2.png" alt="menu" class="menu-hamburger">
+    <img src="{{asset('images/menu-btn2.png')}}" alt="menu" class="menu-hamburger">
 </nav>
 <script>
     let subMenuWrap = document.getElementById("sub-menuwrap");
