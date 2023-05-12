@@ -44,11 +44,12 @@
                     <div class="div-input-product">
                         <label for="name">Nom du produit</label>
                         <input type="text" name="name" id="name" class="form-input">
+                {{-- alerte erreur des inputs --}}
+
                         @error('name')
                             <span class="error">{{ $message }}</span>
                         @enderror
                     </div>
-
                     <div class="div-input-product">
                         <label for="price">Prix</label>
                         <input type="text" name="price" id="price" class="form-input">
@@ -179,7 +180,7 @@
         </form>
     </div>
 
-
+{{-- CRUD livewire pour faire le systeme de rechere de pagination --}}
 <livewire:product-table />
 
  {{-- <script>

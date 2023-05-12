@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Gate;
 class UserController extends Controller
 {
 
-
+// affiche la lust des utilisateir
     public function index()
     {
         $users = User::all();
@@ -24,6 +24,8 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
+
+    // page gestion  utlisateur
     public function edit(User $user)
     {
         return  view('admin.edit',[
@@ -38,6 +40,7 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
+    //  admin modifier info des utilisateur
     public function update(Request $request, User $user)
     {
         $user->name=$request->name;
@@ -54,10 +57,9 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
+    // suuprimer utulisateur
     public function destroy(User $user)
     {
-
-
         $user->delete();
 
         return redirect()->route('utilisateur.index');

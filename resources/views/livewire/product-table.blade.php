@@ -29,17 +29,16 @@
         </tr>
         </thead>
             <tbody>
+                {{-- le produit on l'envoie depuis le controleur puis afficher les info du prduit --}}
                 @foreach($products as $product)
-                {{-- <td><img width="60px" src="{{$product->produit_image}}" width="20px" alt=""> --}}
                     <td><img width="60px" src="{{ asset(Storage::url($product->image_principal)) }}" width="20px" alt=""></td>
 
-                    {{-- <td><img width="60px" src="{{ asset($product->image_principal)}}" width="20px" alt=""></td> --}}
                     <td>{{$product->name}}</td>
                     <td>{{$product->description}}</td>
                     <td>{{$product->price}}</td>
                     <td>{{$product->reference_product}}</td>
 
-                <td class="a-action"><a href="">Modifier</a><a href="{{route('delete_article',$product->id)}}">Supprimer</a></td>
+                <td class="a-action"><a href="{{route('modif_article',$product)}}">Modifier</a><a href="{{route('delete_article',$product->id)}}">Supprimer</a></td>
 
                     </tr>
                 @endforeach
@@ -47,7 +46,7 @@
             </tbody>
         </table>
 
-
+       {{-- pr ajouter une page apartir 10 article 3la hsab productTable.php --}}
         </form>
         <div class=pagination>{{$products->links()}}</div>
         </div>

@@ -39,6 +39,7 @@
     @php
 use App\Models\Product;
 
+// recuperer produit les plus vendu(populaire)
 $topProducts = Product::select('products.id', 'products.name', 'products.description', 'products.tag', 'products.valide', 'products.image_principal', 'products.price')
                         ->join('achats', 'products.id', '=', 'achats.product_id')
                         ->groupBy('products.id', 'products.name', 'products.description', 'products.tag', 'products.valide', 'products.image_principal', 'products.price')
@@ -51,11 +52,15 @@ $topProducts = Product::select('products.id', 'products.name', 'products.descrip
             <h2>Produits populaires</h2>
             <p>Offrez-vous le meilleur du confort avec nos produits de meubles et de literie les plus populaires</p>
             <div class="list-article bg-article-pp">
+
+                {{-- affichage des produit populaire --}}
                @foreach ($topProducts as $product)
                <div>
                 <img  width="400px" src="{{asset(Storage::url($product->image_principal))}}" alt="">
                 <h5>{{$product->name}}</h5>
                 <h6>{{$product->price}}</h6>
+                <a href="{{route('produit', $product->id)}}">Voir Article</a>
+
                  </div>
 
                @endforeach
@@ -64,7 +69,7 @@ $topProducts = Product::select('products.id', 'products.name', 'products.descrip
         </article>
         @php
 
-
+// recuperer produit les nouveau produit (date)
 $produits = Product::select('products.id', 'products.name', 'products.description', 'products.tag', 'products.valide', 'products.image_principal', 'products.price')
                    ->where('valide', 1)
                    ->latest('created_at')
@@ -75,11 +80,16 @@ $produits = Product::select('products.id', 'products.name', 'products.descriptio
             <h2>Nos nouveau produits</h2>
             <p>Découvrez nos derniers produits, conçus avec les dernières tendances en matière de design et de fonctionnalité,pour apporter une touche de modernité à votre intérieur</p>
             <div class="list-article bg-article-np">
+
+{{-- affichage des nouveau produit --}}
+
                 @foreach ($produits as $produit)
                 <div>
                     <img width="400px" src="{{asset(Storage::url($produit->image_principal))}}" alt="">
                     <h5>{{$produit->name}}</h5>
                     <h6>{{$produit->price}} DZD</h6>
+            <a href="{{route('produit', $produit->id)}}">Voir Article</a>
+
                 </div>
                 @endforeach
 

@@ -29,7 +29,7 @@
 
 
 <section id="sctn-article" class="sctn-article">
-
+    {{-- renvoi a la boutique-table --}}
     <livewire:boutique-table />
 </section>
 @if (session('success'))

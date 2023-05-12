@@ -70,6 +70,7 @@
 
 
         @php
+        // recupere les categories a la base de donne (list categorie)
         use App\Models\categories;
         $categories = categories::all();
         @endphp
@@ -77,7 +78,7 @@
 
             <option selected>Tout</option>
 
-
+{{-- affiche les categorie (select) --}}
             @foreach ($categories as $categorie)
                 <option value="{{$categorie->id}}">{{$categorie->name}}</option>
             @endforeach
@@ -94,10 +95,12 @@
             <strong>{{$product->price}}</strong>
             <br>
             <a href="{{route('produit', $product->id)}}">Voir Article</a>
+           {{-- si vs etes connecter tu peut ajouter au favoris --}}
             @if (Auth::check())
             <form wire:submit.prevent="addFavoris({{ $product->id }})">
                 @csrf
                 <?php
+// recuperer de la table wishlist et verifie l'existance (boolean)
                     $userId = Auth::user()->id;
                     $isFavorited = DB::table('wishlists')
                                     ->where('user_id', $userId)
@@ -105,6 +108,7 @@
                                     ->exists();
                 ?>
                 <button type="submit">
+                    {{-- verifier si exist donc il affiche image plein --}}
                     @if ($isFavorited)
                         <img class="img-favoris" src="{{asset('images/icon/icon-aime-active.png')}}" alt="">
                     @else

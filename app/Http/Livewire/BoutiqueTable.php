@@ -110,4 +110,6 @@ class BoutiqueTable extends Component
         $categorie = Category::find($this->categorieId);
         // Faire quelque chose avec la catégorie sélectionnée
     }
+
+
 }

@@ -11,6 +11,7 @@ class FavorisTable extends Component
     public string $search = '';
     public function render()
     {
+        // rechercher le produit aparir du nom article (declarer var search)
 
         $user_id = Auth::id();
         $wish = Wishlist::join('users','wishlists.user_id','=','users.id')
